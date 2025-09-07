@@ -1,24 +1,38 @@
 import example.*
 describe "el Paquete De George" { 
     test " el paquete de george puede ser entregado"{
-        assert.equals(false, paquete.puedeEntregarse())
+      paquete.mensajero(neo)
+      paquete.destino(laMatrix)
+      paquete.pagoPaquete(true)
+      assert.notThat(paquete.puedeEntregarse())
     }
 }
 
 describe "el Paquete De George llevado por jean " {
     test "el paquete de george fue llevado por jean a la matrix " {
-        assert.equals(true, paquete.puedeEntregarse())
+    paquete.mensajero(jeanGray)
+    paquete.destino(laMatrix)
+     paquete.pagoPaquete(true)
+        assert.that(paquete.puedeEntregarse())
     }
 }
 
 describe " paquete entregado por sara"{
     test "el paquete no puede ser llevado por sara porque pesa 70kg" {
-        assert.equals(false, paquete.puedeEntregarse())
+    paquete.mensajero(saraConnor)
+    paquete.destino(puenteDeBrooklyn)
+    paquete.pagoPaquete(true)
+     saraConnor.vehiculo(camion)
+        assert.notThat(paquete.puedeEntregarse())
     }
 }
 describe " paquete entregado por sara con moto "{
     test "el paquete llevado en moto " {
-        assert.equals(true, paquete.puedeEntregarse())
+         paquete.mensajero(saraConnor)
+    paquete.destino(puenteDeBrooklyn)
+     paquete.pagoPaquete(true)
+     saraConnor.vehiculo(moto)
+        assert.that(paquete.puedeEntregarse())
     }
 }
 

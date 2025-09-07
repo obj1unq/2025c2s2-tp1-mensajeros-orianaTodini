@@ -1,22 +1,24 @@
 object paquete{
-    var property persona = jeanGray
+    var property mensajero = jeanGray
     var property  destino = laMatrix
+    var property remitente =  stevenSpielberg
+    var property pagoPaquete = true
     method puedeEntregarse(){
-        return stevenSpielberg.pagoPaquete() and destino.dejarPasarA_(persona)
+        return remitente.pagoPaquete() and destino.dejarPasar(mensajero)
     }
 }
 object stevenSpielberg{
     method pagoPaquete(){
-        return true 
+        return true
     }
 }
 object puenteDeBrooklyn{
-    method dejarPasarA_(persona){
+    method dejarPasar(persona){
         return(persona.peso() <= 1000)
     }
 }
 object laMatrix{
-    method dejarPasarA_(persona){
+    method dejarPasar(persona){
         return persona.puedeLlamar()
     }
 }
@@ -32,22 +34,26 @@ object jeanGray{
 
 }
 object  neo{
-    var credito= 10 
     method peso(){
         return 0 
     }
     method puedeLlamar(){
-        credito = credito - 1
-        return credito >= 1
+        return true
     }
 }
 
 object saraConnor{
-    const peso = 70 
+    var  pesoPropio = 70 
     var property vehiculo = camion 
 	method peso() {
-	  return peso + vehiculo.peso() 
+	  return pesoPropio + vehiculo.peso() 
 	}
+    method puedeLlamar(){
+        return false
+    }
+    method pesoPropio(_pesoPropio){
+        pesoPropio = _pesoPropio
+    }
     }
 
 object moto {
@@ -58,6 +64,6 @@ object moto {
  object camion { 
 	const acoplados = 1
     method peso (){ 
-    return 5000 * acoplados
+    return 500 * (1 + acoplados)
      }
  }
